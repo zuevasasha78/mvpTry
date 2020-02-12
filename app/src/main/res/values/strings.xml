@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">mvpTry</string>
+    <string name="mvp">MVP</string>
+    <string name="add">Add</string>
+    <string name="clear">Clear</string>
+    <string name="please_wait">Please, wait ...</string>
+    <string name="empty_values">Empty values</string>
 </resources>
