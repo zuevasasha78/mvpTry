@@ -9,7 +9,7 @@ class UserTable {
     }
 
     companion object {
-        private const val TABLE = "users"
+        const val TABLE = "users"
         val CREATE_SCRIPT = String.format(
             "create table %s ("
                     + "%s integer primary key autoincrement,"
