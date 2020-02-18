@@ -14,7 +14,6 @@ class UserModel(val dbHelper: DbHelper) {
     fun loadUsers(callback: LoadUserCallback) {
         val loadUsersTask = LoadUsersTask(callback)
         loadUsersTask.execute()
-
     }
 
     fun addUser(contentValues: ContentValues, callback: CompleteCallback) {
