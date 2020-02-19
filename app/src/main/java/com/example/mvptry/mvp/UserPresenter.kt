@@ -23,36 +23,36 @@ class UserPresenter(private val model: UserModel) {
     }
 
     fun loadUsers() {
-        model.loadUsers(object : UserModel.LoadUserCallback() {
-            fun onLoad(users: List<User>) {
+        model.loadUsers(object : UserModel.LoadUserCallback {
+            override fun onLoad(users: List<User>) {
                 view!!.showUsers(users)
             }
         })
     }
 
     fun add() {
-        val userData: UserData = view.getUserData()
+        val userData: UserData = view!!.getUserData()
         if (TextUtils.isEmpty(userData.name) || TextUtils.isEmpty(userData.email)) {
-            view.showToast(R.string.empty_values)
+            view!!.showToast(R.string.empty_values)
             return
         }
         val cv = ContentValues(2)
         cv.put(UserTable.COLUMN.NAME, userData.name)
         cv.put(UserTable.COLUMN.EMAIL, userData.email)
         view!!.showProgress()
-        model.addUser(cv, object : UserModel.CompleteCallback() {
-            fun onComplete() {
-                view.hideProgress()
+        model.addUser(cv, object : UserModel.CompleteCallback {
+            override fun onComplete() {
+                view!!.hideProgress()
                 loadUsers()
             }
         })
     }
 
     fun clear() {
-        view.showProgress()
-        model.clearUsers(object : UserModel.CompleteCallback() {
-            fun onComplete() {
-                view.hideProgress()
+        view!!.showProgress()
+        model.clearUsers(object : UserModel.CompleteCallback {
+            override fun onComplete() {
+                view!!.hideProgress()
                 loadUsers()
             }
         })
